@@ -16,7 +16,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var mistakeLabel: UILabel!
     @IBOutlet weak var newGameButton: UIButton!
     
-    lazy var game = Game(countItems: buttons.count, time: 10, mistakes: 0) { [weak self] status, seconds in
+    lazy var game = Game(countItems: buttons.count, mistakes: 0) { [weak self] status, seconds in
         
         guard let self = self else {return}
         
@@ -28,6 +28,11 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         setupScreen()
+    }
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        game.stopGame()
     }
     
     @IBAction func pressButton(_ sender: UIButton) {
