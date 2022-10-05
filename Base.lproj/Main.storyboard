@@ -44,7 +44,7 @@
                                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                         <state key="normal" title="Records"/>
                                         <connections>
-                                            <segue destination="cxe-HN-jLp" kind="show" id="eWt-oZ-IwG"/>
+                                            <segue destination="kqb-bm-SrU" kind="presentation" id="eWt-oZ-IwG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -357,6 +357,7 @@
                         <outletCollection property="buttons" destination="6OJ-1C-FK8" collectionClass="NSMutableArray" id="xuF-J1-paa"/>
                         <outletCollection property="buttons" destination="mmb-iS-vaU" collectionClass="NSMutableArray" id="Jvh-tn-csS"/>
                         <outletCollection property="buttons" destination="U5R-sq-wVv" collectionClass="NSMutableArray" id="MGO-4M-hOG"/>
+                        <segue destination="kqb-bm-SrU" kind="presentation" identifier="recordVC" modalPresentationStyle="fullScreen" id="ysT-jO-HPC"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C5I-UT-yOi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -529,18 +530,39 @@
         <!--Records-->
         <scene sceneID="s2i-5d-mcS">
             <objects>
-                <viewController id="cxe-HN-jLp" sceneMemberID="viewController">
+                <viewController id="cxe-HN-jLp" customClass="RecordViewController" customModule="FindNumber" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="W6j-P6-A9q">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="787"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xsk-Vw-l7F">
+                                <rect key="frame" x="174" y="411" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Cna-jP-17B"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Xsk-Vw-l7F" firstAttribute="centerX" secondItem="Cna-jP-17B" secondAttribute="centerX" id="0Bv-BG-Tqv"/>
+                            <constraint firstItem="Xsk-Vw-l7F" firstAttribute="centerY" secondItem="Cna-jP-17B" secondAttribute="centerY" id="UTQ-B6-lF7"/>
+                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Records" id="g0Q-Bk-fOb"/>
+                    <navigationItem key="navigationItem" title="Records" id="g0Q-Bk-fOb">
+                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="p3L-Nq-rSx">
+                            <connections>
+                                <action selector="closeVC:" destination="cxe-HN-jLp" id="CfR-dz-wse"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="recordLabel" destination="Xsk-Vw-l7F" id="hfm-oL-NQe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AQd-yo-rb4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280" y="-631"/>
+            <point key="canvasLocation" x="1209.2307692307693" y="-631.27962085308059"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="l1V-hw-5if">
@@ -560,7 +582,28 @@
             </objects>
             <point key="canvasLocation" x="-649.23076923076917" y="101.65876777251184"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rqp-Ao-ewy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="kqb-bm-SrU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="geT-Zt-sXZ">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="56"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="cxe-HN-jLp" kind="relationship" relationship="rootViewController" id="bX4-S9-W6g"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vyJ-7q-68o" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="280" y="-631.27962085308059"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="eWt-oZ-IwG"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
